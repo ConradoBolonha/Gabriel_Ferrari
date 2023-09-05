@@ -1,0 +1,142 @@
+#### CONFIGURAÇÃO INICIAL ####
+$ git config --global user.name "Conrado Bolonha"
+$ git config --global user.email "conradobolonha@gmail.com"
+
+
+Obs.: Após criar o diretório que vai usar como repo git, precisa dar o comando
+	"git init" para poder criar o diretório oculto ".git". Não precisa
+	criar novamente a não ser que delete o diretório e crie outro.
+
+#### LISTANDO CONFIGURAÇÕES DO USUÁRIO NO GIT ####
+git config --list
+
+
+#### MUDANDO A BRANCH PADRÃO ####
+$ git config --global init.defaultBranch main
+$ git checkout -b main   ---> Muda a branch padrão para main
+
+	--> O repo sempre vai iniciar uma branch com nome main
+
+#### PREPARANDO ARQUIVOS PARA SEREM SALVOS ####
+git add <nome_do_arquivo> --> Salva apenas o arquivo específico.
+git add * | git add --all | git add. | git add -A --> Salva todos arquivos que estão dentro do repo.
+
+
+#### REMOVER ARQUIVOS ANTES DE SEREM ENVIADOS PARA O GITHUB ####
+git rm --cached hello.txt  --> O GIT para de rastrear o arquivo "hello.txt"
+git rm --cached -r .  --> Remove o rastreamento de vários arquivos.
+
+#### ADICIONANDO UMA VERSÃO NO(S) ARQUIVO(S) ANTES DE SEREM ENVIADOS PARA O GITHUB ####
+git commit -m "commit-1"  --> "commit-1" é o nome da versão
+
+#### VISUALIZANDO AS MODIFICAÇÕES NO ARQUIVO ####
+git diff --> Mostra as diferentes modificações feitas no arquivo. Arquivos na área de
+		preparação (staged) não são lidos pelo commando "diff".
+
+git diff --cached  --> Mostra as diferentes modificações feitas no arquivo que estão na
+			área de preparação (staged).
+git diff --staged  --> Mesmo que o comando "git diff --cached"
+
+
+#### HISTÓRICO DE COMMITS ####
+git log   --> Lista as versões dos commits feitos e o autor com data e hora.
+git log --oneline   ---> Lista somente as versões do commit resumida
+git log -1   ---> Lista a versão do commit mais recente
+git log -3   ---> Lista as versões dos três commits mais recentes
+git log --online -1   ---> Lista a versão resumida do commit mais recente
+git log --online -3   ---> Lista as versões resumidas dos três commits mais recente
+git log -p   ---> Lista as versões dos commits e as modificações feitas
+git log -patch   ---> Igual ao comando "git log -p"
+git log --stat   ---> Lista as modificações (diff) dentro das versões.
+git log --stat -1   ---> Lista as modificações (diff) dentro do último commit
+git log --stat -3   ---> Lista as modificações (diff) dentro do últimos três commits
+git log --shortstat   ---> Lista as modificações (diff) resumidas dentro das versões
+git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro do último commit
+git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro dos últimos três commits
+
+#### ALTERANDO O NOME DA VERSÃO ####
+git commit --amend -m "nome_nova_versão"   ---> Altera o nome da última versão commitada. Ao trocar,
+						o número do rash também é modificado. Não é recomendado
+						alterar após ter feito um "git push", pois outra pessoa
+						pode estar trabalhando no commit anterior.
+
+
+#### ALTERANDO EDITOR DE TEXTO PADRÃO DO GIT ####
+
+	# Essa alteração é feita no core.editor
+
+* VSCode ---> git config --global core.editor "code --wait"
+
+* Notepad++ ---> git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+
+#### USANDO COMMIT ANTERIORES ####
+$ git checkout <numero_hash>
+
+	* Listar com o comando "git log --online" para saber o número reduzido do hash, copiar e colar (shift + insert)
+
+$ git checkout master --> Volta para o commit mais recente.
+$ git checkout <nome_do_arquivo>  ---> Reverte o arquivo para a última versão (perde todas alterações)
+
+#### LIMPAR ARQUIVOS NÃO RASTREADOS ####
+$ git clean -f
+
+
+#### RESETAR TUDO QUE FOI FEITO NO ÚLTIMO COMMIT ###
+$ git reset --hard
+
+	Depois de executar o comando acima,  executar também o comando abaixo.
+
+$ git clean -f
+
+///////////////////////////  RESUMO  ///////////////////////
+
+untracked=não rastrado | tracked=rastredo | 
+
+Arquivo untracked: git clean -f
+Arquivo tracked/modified: git checkout <nome_arquivo>
+Arquivo tracked/staged: git restore --staged <nome_arquivo> ou git rm --cached <nome_arquivo>
+
+
+#### EXCLUINDO ARQUIVOS DO RASTREAMENTO DO GIT (ANTES DO COMMIT) ####
+
+	O comando abaixo, ignora arquivos do rastreamento do git. Geralmente, são arquivos pessoais
+	que não interessa para a equipe.
+
+$ touch .gitignore  ---> Cria um arquivo com extensão .gitignore
+
+	Abrir o arquivo ".gitignore" no bloco de notas e inserir a extensão ou nome do arquivo
+	que deseja ignorar. Pode incluir no txt o .gitignore também para não ficar aparecendo.
+
+#### EXCLUINDO ARQUIVOS DO RASTREAMENTO DO GIT (APÓS DO COMMIT) ####
+
+$ git update-index --skip-worktree nome_do_arquivo  ---> Arquivo não é observado pelo git
+$ git update-index --no-skip-worktree nome_do_arquivo  ---> Arquivo volta a ser observado pelo git
+	Obs.: Os arquivos anteriores que tem commit continua no log. Só os novos que não serão rastreados.
+
+
+#### CLONANDO REPOSITÓRIOS LOCAIS ####
+$ git clone <diretorio_origem> <nome_diretorio_destino>
+	Obs.: Clona também os logs
+
+
+*********************************************************************************
+****************************** GIT + GITHUB *************************************
+*********************************************************************************
+
+$ git remote -v  ---> Verifica se o repositório tem algum servidor remoto associado
+
+$ git remote add origin <endereço_html_github>  ---> Adiciona/altera o repositório associado no GitHub
+
+$ git remote set-url origin <novo_endereço_html_github>   ---> Muda o apontamento do diretório no GitHub. Usado
+								quando altera o nome do projeto no GitHub.
+
+$ git push  ---> Envia os arquivos locais para o repositório no GitHub
+
+$ git pull  ---> Atualiza o repositório local com as últimas versões que estão no GitHub
+
+
+#### CHAVES SSH #####
+
+$ ssh-keygen  ---> Cria uma chave ssh no computador local. Dar ENTER nas perguntas. Copiar essa chave e
+					colar no GitHub
