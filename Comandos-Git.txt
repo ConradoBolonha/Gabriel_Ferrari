@@ -91,7 +91,7 @@ $ git clean -f
 
 ///////////////////////////  RESUMO  ///////////////////////
 
-untracked=não rastrado | tracked=rastredo | 
+untracked=não rastreado | tracked=rastredo | 
 
 Arquivo untracked: git clean -f
 Arquivo tracked/modified: git checkout <nome_arquivo>
