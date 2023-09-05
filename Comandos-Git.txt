@@ -140,3 +140,14 @@ $ git pull  ---> Atualiza o repositório local com as últimas versões que est�
 
 $ ssh-keygen  ---> Cria uma chave ssh no computador local. Dar ENTER nas perguntas. Copiar essa chave e
 					colar no GitHub
+
+#### BRANCH ####
+
+$ git branch   ---> Exibe as listagem de branches existentes
+$ git branch --list   ---> Igual ao comando "$ git branch"
+$ git branch newbranch  ---> Cria a branch "newbranch"
+$ git checkout newbranch  ---> Muda da branch "main" para a branch "newbranch"
+
+	Obs.: Alterações e commits feitos na branch "newbranch" não são replicadas para a branch
+			"main". A branch "main" fica intacta. As branchs são independentes.
+			
