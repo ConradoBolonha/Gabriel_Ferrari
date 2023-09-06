@@ -155,3 +155,16 @@ $ git checkout -b task_1  ---> Cria a branch "task_1" e já faz um checkout para
 $ git switch task_1  ---> Muda para a branch "task_1"
 $ git switch -   ---> Volta para a branch anterior
 $ git switch -c task_2  ---> cria a branch "task_2"
+
+#### MUDAR DE BRANCH SEM SALVAR ####
+
+$ git checkout -f main  ---> Quando muda para a branch "main" todas modificações feitas na branch anterior
+								são perdidas. Esse comando equivale ao "$ git reset --hard"
+
+
+#### Detached HEAD (Cabeça destacada  --> Quando o HEAD está destacando um commit anterior) ####
+
+Podemos voltar o commit para sabermos como o repositório estava antes do último commit.
+
+$ git checkout cdcbf35   ---> Onde "cdcbf35" é o hash de um commit anterior. O commit em uso (HEAD)
+								será alterado para um commit antigo.
