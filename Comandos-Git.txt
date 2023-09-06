@@ -171,7 +171,7 @@ $ git checkout cdcbf35   ---> Onde "cdcbf35" é o hash de um commit anterior. O 
 								
 #### ENVIANDO BRANCH PARA O GITHUB ####
 
-$ git push --set-upstream origin newbranch
+$ git push --set-upstream origin newbranch  ---> Envia a branch criada para o GitHub
 $ git push -u origin newbranch  ---> Mesmo que o comando acima.
 
 #### REMOVENDO BRANCH LOCAL ####
@@ -181,4 +181,23 @@ $ git branch -d <nome_branch>  ---> Usando o parâmetro "-D" força a remoção 
 
 #### REMOVENDO BRANCH REMOTA ####
 
-$ git branch 
+$ git push --delete origin <nome_branch>  ---> Sempre que deletar uma branch remota, precisa comunicar
+												a equipe. A branch local não é excluída. Precisa excluir
+												com o comando "$ git branch -d <nome_branch>"
+
+#### RENOMEANDO UMA BRANCH LOCAL ####
+
+$ git branch -m <novo_nome>  ---> Logar na branch que deseja alterar o nome.
+$ git branch -m <nome_atual> <novo_nome>
+
+#### RENOMEANDO UMA BRANCH REMOTA ####
+
+Não é possível alterar o nome de uma branch remotamente. Para contornar, precisa apagar a branch
+remota, renomear a branch local e reenviar a nova branch.
+
+#### LOG DE COMMIT FILTRANDO POR BRANCH ####
+
+$ git log main --oneline
+$ git log newbranch --online -3
+
+#### 
