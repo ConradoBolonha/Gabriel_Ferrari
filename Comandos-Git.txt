@@ -168,3 +168,17 @@ Podemos voltar o commit para sabermos como o repositório estava antes do últim
 
 $ git checkout cdcbf35   ---> Onde "cdcbf35" é o hash de um commit anterior. O commit em uso (HEAD)
 								será alterado para um commit antigo.
+								
+#### ENVIANDO BRANCH PARA O GITHUB ####
+
+$ git push --set-upstream origin newbranch
+$ git push -u origin newbranch  ---> Mesmo que o comando acima.
+
+#### REMOVENDO BRANCH LOCAL ####
+
+$ git branch -d <nome_branch>  ---> Usando o parâmetro "-D" força a remoção mesmo com avisos de alerta.
+										Ao excluir uma branch, exclui também o histórico.
+
+#### REMOVENDO BRANCH REMOTA ####
+
+$ git branch 
