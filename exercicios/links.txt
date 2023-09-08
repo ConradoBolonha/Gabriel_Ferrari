@@ -3,3 +3,6 @@ http
 https
 
 newbranch adicionada!!!
+
+///// TESTANDO MERGE ENTRE BRANCH /////
+--- Logado na branch "newbranch" ---

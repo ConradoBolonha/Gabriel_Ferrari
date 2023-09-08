@@ -4,3 +4,6 @@ _____________________________________
 
 
 ADICIONADO A NOVA BRANCH "NEWBRANCH"
+
+### ESSA É A BRANCH "NEWBRACH ###"
+--- TESTANDO MERGE ENTRE BRANCH ---
