@@ -244,4 +244,48 @@ $ git tag -d <nome_tag>
 
 $ git push --delete origin <nome_tag>
 
- 
+#### FUNCIONALIDADE STASH ###
+
+$ git stash  ---> Quando faz uma modificação e não pode comitar, não pode trocar de branch e não
+					pode dar um checkout. 
+					
+$ git stash list  ---> Lista as modificações que estão em standby no "stash".
+$ git stash apply  ---> Depois de voltar para a branch anterior, esse comando restaura a
+						a modicação que estava em standby com o comando "git stash".
+$ git stash apply stash@{1}  ---> Nesse caso, vai restaurar o stash 1. Caso tenha mais um stash,
+									quando menor o número, mais recente é a versão.
+								Obs.: Pode trocar de stash, dando um "git reset --hard" e depois
+										selecionando a nova stash.
+$ git stash pop  ---> Restaura a stash mais recente e apaga todas as outras stashes.
+$ git stash pop stash@{1}  ---> restaura o stach 0 e deleta o stash 1
+$ git stash drop  ---> Remove todos staches sem restaurar.
+$ git stash drop stash@{1}  ---> Remove apenas o stash 1
+$ git stash branch feature_1 stash@{0}  ---> Cria a branch "feature_1" com a mudanças feitas na
+												branch indicada. Se não indicar a stach, será a
+												mais recente.
+
+#### REVERTENDO COMMITS ####
+
+$ git revert HEAD  ---> Volta para o commit anterior porém com um novo número de hash.
+$ git revert HEAD  ---> Reverte o que foi revertido porém com um novo número de hash.
+
+#### DESFAZER COMMITS ####
+
+$ git reset --hard HEAD~1  ---> Apaga o commit mais recente
+$ git reset --hard HEAD~3  ---> Apaga o commit HEAD + três commits mais recentes. Apaga 4 commits
+
+		Obs.: Caso queira trazer todos commits novamente, só dar um "git pull" (Porque está local)
+
+#### FORÇANDO O ENVIO DE MUDANÇAS PARA O SERVIDOR ####
+
+--- Esse comando é perigoso. Tenha certeza que o repositório local está correto pois o repositório
+	local será apagado ---
+
+$ git push --force ---> Sobrescreve os arquivos do servidor.
+$ git push --force-with-lease  ---> Sobrescreve os arquivos do servidor caso as mudanças não
+										sejam perdidas.
+
+
+
+
+
