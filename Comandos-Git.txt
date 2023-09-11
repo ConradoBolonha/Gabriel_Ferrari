@@ -1,0 +1,247 @@
+#### CONFIGURAÇÃO INICIAL ####
+$ git config --global user.name "Conrado Bolonha"
+$ git config --global user.email "conradobolonha@gmail.com"
+
+
+Obs.: Após criar o diretório que vai usar como repo git, precisa dar o comando
+	"git init" para poder criar o diretório oculto ".git". Não precisa
+	criar novamente a não ser que delete o diretório e crie outro.
+
+#### LISTANDO CONFIGURAÇÕES DO USUÁRIO NO GIT ####
+git config --list
+
+
+#### MUDANDO A BRANCH PADRÃO ####
+$ git config --global init.defaultBranch main
+$ git checkout -b main   ---> Muda a branch padrão para main
+
+	--> O repo sempre vai iniciar uma branch com nome main
+
+#### PREPARANDO ARQUIVOS PARA SEREM SALVOS ####
+git add <nome_do_arquivo> --> Salva apenas o arquivo específico.
+git add * | git add --all | git add. | git add -A --> Salva todos arquivos que estão dentro do repo.
+
+
+#### REMOVER ARQUIVOS ANTES DE SEREM ENVIADOS PARA O GITHUB ####
+git rm --cached hello.txt  --> O GIT para de rastrear o arquivo "hello.txt"
+git rm --cached -r .  --> Remove o rastreamento de vários arquivos.
+
+#### ADICIONANDO UMA VERSÃO NO(S) ARQUIVO(S) ANTES DE SEREM ENVIADOS PARA O GITHUB ####
+git commit -m "commit-1"  --> "commit-1" é o nome da versão
+
+#### VISUALIZANDO AS MODIFICAÇÕES NO ARQUIVO ####
+git diff --> Mostra as diferentes modificações feitas no arquivo. Arquivos na área de
+		preparação (staged) não são lidos pelo commando "diff".
+
+git diff --cached  --> Mostra as diferentes modificações feitas no arquivo que estão na
+			área de preparação (staged).
+git diff --staged  --> Mesmo que o comando "git diff --cached"
+
+
+#### HISTÓRICO DE COMMITS ####
+git log   --> Lista as versões dos commits feitos e o autor com data e hora.
+git log --oneline   ---> Lista somente as versões do commit resumida
+git log -1   ---> Lista a versão do commit mais recente
+git log -3   ---> Lista as versões dos três commits mais recentes
+git log --online -1   ---> Lista a versão resumida do commit mais recente
+git log --online -3   ---> Lista as versões resumidas dos três commits mais recente
+git log -p   ---> Lista as versões dos commits e as modificações feitas
+git log -patch   ---> Igual ao comando "git log -p"
+git log --stat   ---> Lista as modificações (diff) dentro das versões.
+git log --stat -1   ---> Lista as modificações (diff) dentro do último commit
+git log --stat -3   ---> Lista as modificações (diff) dentro do últimos três commits
+git log --shortstat   ---> Lista as modificações (diff) resumidas dentro das versões
+git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro do último commit
+git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro dos últimos três commits
+
+#### ALTERANDO O NOME DA VERSÃO ####
+git commit --amend -m "nome_nova_versão"   ---> Altera o nome da última versão commitada. Ao trocar,
+						o número do rash também é modificado. Não é recomendado
+						alterar após ter feito um "git push", pois outra pessoa
+						pode estar trabalhando no commit anterior.
+
+
+#### ALTERANDO EDITOR DE TEXTO PADRÃO DO GIT ####
+
+	# Essa alteração é feita no core.editor
+
+* VSCode ---> git config --global core.editor "code --wait"
+
+* Notepad++ ---> git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+
+#### USANDO COMMIT ANTERIORES ####
+$ git checkout <numero_hash>
+
+	* Listar com o comando "git log --online" para saber o número reduzido do hash, copiar e colar (shift + insert)
+
+$ git checkout master --> Volta para o commit mais recente.
+$ git checkout <nome_do_arquivo>  ---> Reverte o arquivo para a última versão (perde todas alterações)
+
+#### LIMPAR ARQUIVOS NÃO RASTREADOS ####
+$ git clean -f
+
+
+#### RESETAR TUDO QUE FOI FEITO NO ÚLTIMO COMMIT ###
+$ git reset --hard
+
+	Depois de executar o comando acima,  executar também o comando abaixo.
+
+$ git clean -f
+
+///////////////////////////  RESUMO  ///////////////////////
+
+untracked=não rastreado | tracked=rastredo | 
+
+Arquivo untracked: git clean -f
+Arquivo tracked/modified: git checkout <nome_arquivo>
+Arquivo tracked/staged: git restore --staged <nome_arquivo> ou git rm --cached <nome_arquivo>
+
+
+#### EXCLUINDO ARQUIVOS DO RASTREAMENTO DO GIT (ANTES DO COMMIT) ####
+
+	O comando abaixo, ignora arquivos do rastreamento do git. Geralmente, são arquivos pessoais
+	que não interessa para a equipe.
+
+$ touch .gitignore  ---> Cria um arquivo com extensão .gitignore
+
+	Abrir o arquivo ".gitignore" no bloco de notas e inserir a extensão ou nome do arquivo
+	que deseja ignorar. Pode incluir no txt o .gitignore também para não ficar aparecendo.
+
+#### EXCLUINDO ARQUIVOS DO RASTREAMENTO DO GIT (APÓS DO COMMIT) ####
+
+$ git update-index --skip-worktree nome_do_arquivo  ---> Arquivo não é observado pelo git
+$ git update-index --no-skip-worktree nome_do_arquivo  ---> Arquivo volta a ser observado pelo git
+	Obs.: Os arquivos anteriores que tem commit continua no log. Só os novos que não serão rastreados.
+
+
+#### CLONANDO REPOSITÓRIOS LOCAIS ####
+$ git clone <diretorio_origem> <nome_diretorio_destino>
+	Obs.: Clona também os logs
+
+
+*********************************************************************************
+****************************** GIT + GITHUB *************************************
+*********************************************************************************
+
+$ git remote -v  ---> Verifica se o repositório tem algum servidor remoto associado
+
+$ git remote add origin <endereço_html_github>  ---> Adiciona/altera o repositório associado no GitHub
+
+$ git remote set-url origin <novo_endereço_html_github>   ---> Muda o apontamento do diretório no GitHub. Usado
+								quando altera o nome do projeto no GitHub.
+
+$ git push  ---> Envia os arquivos locais para o repositório no GitHub
+
+$ git pull  ---> Atualiza o repositório local com as últimas versões que estão no GitHub
+
+
+#### CHAVES SSH #####
+
+$ ssh-keygen  ---> Cria uma chave ssh no computador local. Dar ENTER nas perguntas. Copiar essa chave e
+					colar no GitHub
+
+#### BRANCH ####
+
+$ git branch   ---> Exibe as listagem de branches existentes
+$ git branch --list   ---> Igual ao comando "$ git branch"
+$ git branch newbranch  ---> Cria a branch "newbranch"
+$ git checkout newbranch  ---> Muda da branch "main" para a branch "newbranch"
+$ git checkout -b task_1  ---> Cria a branch "task_1" e já faz um checkout para a nova branch
+
+	Obs.: Alterações e commits feitos na branch "newbranch" não são replicadas para a branch
+			"main". A branch "main" fica intacta. As branchs são independentes.
+			
+$ git switch task_1  ---> Muda para a branch "task_1"
+$ git switch -   ---> Volta para a branch anterior
+$ git switch -c task_2  ---> cria a branch "task_2"
+
+#### MUDAR DE BRANCH SEM SALVAR ####
+
+$ git checkout -f main  ---> Quando muda para a branch "main" todas modificações feitas na branch anterior
+								são perdidas. Esse comando equivale ao "$ git reset --hard"
+
+
+#### Detached HEAD (Cabeça destacada  --> Quando o HEAD está destacando um commit anterior) ####
+
+Podemos voltar o commit para sabermos como o repositório estava antes do último commit.
+
+$ git checkout cdcbf35   ---> Onde "cdcbf35" é o hash de um commit anterior. O commit em uso (HEAD)
+								será alterado para um commit antigo.
+								
+#### ENVIANDO BRANCH PARA O GITHUB ####
+
+$ git push --set-upstream origin newbranch  ---> Envia a branch criada para o GitHub
+$ git push -u origin newbranch  ---> Mesmo que o comando acima.
+
+#### REMOVENDO BRANCH LOCAL ####
+
+$ git branch -d <nome_branch>  ---> Usando o parâmetro "-D" força a remoção mesmo com avisos de alerta.
+										Ao excluir uma branch, exclui também o histórico.
+
+#### REMOVENDO BRANCH REMOTA ####
+
+$ git push --delete origin <nome_branch>  ---> Sempre que deletar uma branch remota, precisa comunicar
+												a equipe. A branch local não é excluída. Precisa excluir
+												com o comando "$ git branch -d <nome_branch>"
+
+#### RENOMEANDO UMA BRANCH LOCAL ####
+
+$ git branch -m <novo_nome>  ---> Logar na branch que deseja alterar o nome.
+$ git branch -m <nome_atual> <novo_nome>
+
+#### RENOMEANDO UMA BRANCH REMOTA ####
+
+Não é possível alterar o nome de uma branch remotamente. Para contornar, precisa apagar a branch
+remota, renomear a branch local e reenviar a nova branch.
+
+#### LOG DE COMMIT FILTRANDO POR BRANCH ####
+
+$ git log main --oneline
+$ git log newbranch --online -3
+
+#### MERGE (Unir modificação entre branchs) ####
+
+$ git merge <nome_branch_que_será_unida>
+
+	Obs.: Você não envia modificações para uma branch, você trás as modificações. Conecte-se na branch
+			que irá trazer as modificações e use o comando acima.
+			
+$ git branch --no-merged  ---> Informa quais branchs não foram mergeadas
+$ git branch --merged  ---> Mostra quais branch foram mergeadas
+
+$ git merge --abort  ---> Quando tem conflitos entre as branchs, esse comando interrompe o merge.
+$ git reset --hard  ---> Também cancela o merge.
+
+	Obs.: Para resolver o conflito quando um mesmo arquivo foi modificado em diferentes linhas
+			em diferentes branchs, abra o arquivo com algum editor de texto, faça a modificação
+			e depois faça um "git add . / git commit -m <versão_commit>"
+
+#### CRIANDO TAG EM UM COMMIT ####
+
+$ git tag <nome_tag>  ---> Cria uma tag no commit corrente.
+$ git tag -a -m <comentario_tag> <nome_tag_a_ser_criada>
+$ git show <nome_tag>  ---> Exibi o comentário da tag
+$ git tag  ---> Lista somente o nome das tags criadas
+$ git tag -n  ---> Lista as tags e sua descrição
+$ git tag <nome_tag> <numero_hash>  ---> Cria uma tag no commit específico
+$ git tag -a -m <comentario_tag> <nome_tag_a_ser_criada> <numero_hash>
+
+#### ENVIANDO TAG PARA O SERVIDOR REMOTO ####
+
+$ git push origin <nome_tag>
+$ git push --tags   ---> Envia todas tags para o servidor
+
+#### COMPARANDO TAGS ####
+
+$ git diff <nome_tag_1> <nome_tag_2>
+
+#### REMOVENDO TAG LOCAL ####
+
+$ git tag -d <nome_tag>
+
+#### REMOVENDO TAG DO SERVIDOR ###
+
+$ git push --delete origin <nome_tag>
+
+ 
