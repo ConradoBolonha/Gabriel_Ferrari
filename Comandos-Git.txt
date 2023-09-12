@@ -205,7 +205,7 @@ $ git log newbranch --online -3
 $ git merge <nome_branch_que_será_unida>
 
 	Obs.: Você não envia modificações para uma branch, você trás as modificações. Conecte-se na branch
-			que irá trazer as modificações e use o comando acima.
+			que irá RECEBER as modificações e use o comando acima.
 			
 $ git branch --no-merged  ---> Informa quais branchs não foram mergeadas
 $ git branch --merged  ---> Mostra quais branch foram mergeadas
@@ -271,7 +271,7 @@ $ git revert c9bfe49  ---> Reverte para o hash indicado porém com um novo núme
 $ git revert HEAD --no-edit  ---> Reverte para o commit anterior sem abrir o editor de texto. Também cria
 									um novo hash.
 
-#### DESFAZER COMMITS ####
+#### DESFAZER COMMITS (APAGA DO SERVIDOR) ####
 
 $ git reset --hard HEAD~1  ---> Apaga o commit mais recente
 $ git reset --hard HEAD~3  ---> Apaga o commit HEAD + três commits mais recentes (apaga 4 commits)
@@ -286,3 +286,8 @@ $ git reset --hard HEAD~3  ---> Apaga o commit HEAD + três commits mais recente
 $ git push --force ---> Sobrescreve os arquivos do servidor.
 $ git push --force-with-lease  ---> Sobrescreve os arquivos do servidor caso as mudanças não
 										sejam perdidas.
+
+#### REBASE ####
+
+Quando criamos branchs, é criada ramificações na branch principal. O comando "rebase" serve para que
+a branch principal (main) volte a ficar com um histórico linear.
