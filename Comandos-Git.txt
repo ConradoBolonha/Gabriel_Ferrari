@@ -360,3 +360,6 @@ $ git config --global --unset alias.line  ---> Remove o alias do comando "git lo
 #### COMANDO GREP ####
 
 $ git branch | grep r1  ---> Filtra todas as branches que tem a palavra "r1" no início, meio ou fim.
+$ git log --oneline | grep commit  ---> Filtra todas os logs que tem a palavra "commit" no início,
+										meio ou fim.
+							
