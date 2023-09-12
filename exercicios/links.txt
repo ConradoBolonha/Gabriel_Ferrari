@@ -8,8 +8,10 @@ newbranch adicionada!!!
 --- Logado na branch "newbranch" ---
 
 08-09-2023
+<<<<<<< HEAD
 
 USANDO O COMANDO REVERT
 ==========*********===========
 111111111111111111111111111111
 222222222222222222222222222222
+
