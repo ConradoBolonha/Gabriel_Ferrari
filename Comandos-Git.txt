@@ -341,3 +341,22 @@ $ git bisect start
 $ git bisect good <hash_inicio>
 $ git bisect bad <hash_final>
 $ git bisect reset  ---> Para a investigação
+
+#### COMANDO FETCH ####
+
+Atualiza o repositório local com os arquivos, branches, commits e tags do servidor remoto mas não faz um
+merge (como o "git pull" faz). O fetch é uma prévia do que virá no repositório local. Se estiver tudo ok,
+só dar um comando "git merge"
+
+#### CRIANDO ALIAS NO GIT ####
+
+Usado para personalizar o nome do comando. Deixar mais curto.
+
+$ git config --global alias.s status  ---> a palavra "status" recebe uma alias de "git s" = "git status"
+$ git config --global alias.line 'log --oneline'  ---> o comando "git config --oneline" agora pode ser "git line"
+$ git config --global --unset alias.s  ---> Remove a alias do comando "git status"
+$ git config --global --unset alias.line  ---> Remove o alias do comando "git log --oneline"
+
+#### COMANDO GREP ####
+
+$ git branch | grep r1  ---> Filtra todas as branches que tem a palavra "r1" no início, meio ou fim.
