@@ -145,6 +145,7 @@ $ ssh-keygen  ---> Cria uma chave ssh no computador local. Dar ENTER nas pergunt
 
 $ git branch   ---> Exibe as listagem de branches existentes
 $ git branch --list   ---> Igual ao comando "$ git branch"
+$ git branch -a  ---> Lista as branchs locais e remotas.
 $ git branch newbranch  ---> Cria a branch "newbranch"
 $ git checkout newbranch  ---> Muda da branch "main" para a branch "newbranch"
 $ git checkout -b task_1  ---> Cria a branch "task_1" e já faz um checkout para a nova branch
@@ -278,6 +279,10 @@ $ git reset --hard HEAD~3  ---> Apaga o commit HEAD + três commits mais recente
 
 		Obs.: Caso queira trazer todos commits novamente, só dar um "git pull" (Porque está local)
 
+#### VOLTANDO AO COMMIT SEM PERDER ALTERAÇÕES ####
+
+$ git reset --mixed HEAD~1
+
 #### FORÇANDO O ENVIO DE MUDANÇAS PARA O SERVIDOR ####
 
 --- Esse comando é perigoso. Tenha certeza que o repositório local está correto pois o repositório
@@ -291,3 +296,20 @@ $ git push --force-with-lease  ---> Sobrescreve os arquivos do servidor caso as 
 
 Quando criamos branchs, é criada ramificações na branch principal. O comando "rebase" serve para que
 a branch principal (main) volte a ficar com um histórico linear.
+
+$ git rebase <nome_branch>  ---> Tras as modificações de outra branch para a branch que está em uso no
+									momento.
+$ git rebase --abort  ---> Aborta a operação
+$ git rebase --continue  ---> Continua com o rebase sem perguntar
+$ git pull --rebase  ---> Busca todas configurações da branch remota e aplica as alterações na barnch
+							local.
+#### RECRIANDO BRANCH APARTIR DO SERVIDOR ####
+
+$ git fetch origin develop  ---> Tras parcialmente (não cria a branch remota) o repositório da
+									branch "develop" para o	computador local.
+									Para habilitar a branch remota, precisa dar um "git switch develop"
+#### REBASE COM VÁRIOS COMMITS ####
+
+$ git rebase --interactive HEAD~3  ---> Usado quando tem vários commits para serem enviados ao servidor.
+										Quando usado, ao invés de subir todos commits, sobe apenas um
+										commit contemplando todos os outros três (HEAD~3) commits.
