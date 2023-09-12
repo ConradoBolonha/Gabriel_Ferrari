@@ -8,5 +8,3 @@ newbranch adicionada!!!
 --- Logado na branch "newbranch" ---
 
 08-09-2023
-
-TESTE GIT REVERTE====================
