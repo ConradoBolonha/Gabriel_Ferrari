@@ -313,3 +313,31 @@ $ git fetch origin develop  ---> Tras parcialmente (não cria a branch remota) o
 $ git rebase --interactive HEAD~3  ---> Usado quando tem vários commits para serem enviados ao servidor.
 										Quando usado, ao invés de subir todos commits, sobe apenas um
 										commit contemplando todos os outros três (HEAD~3) commits.
+										Quando abrir o editor, trocar a palavra "pick" por "squash" dos
+										commits que vai juntar. Exemplo:
+										
+										pick 2139h45l Commit_1
+										squash 2r5u89k Commit_2
+										squash 8r85op1 Commit_3
+										
+										Nesse exemplo, o "Commit_1" e "Commit_2" será juntado no "Commit_1",
+										ou seja, apenas o "Commit_1" será comitado.
+										No próximo editor que abrir, deixar descomentando somente o nome
+										do commit que gostaria de manter. Depois, só dar um git push.
+
+#### CHERRY PICK ####
+
+$ git cherry-pick <numero_hash> ---> Tras uma hash específica para a branch (gera um novo número de hash).
+
+#### COMANDO BISECT ####
+
+Usado para localizar em qual commit que originou o problema. O algoritmo, vai quebrando um range de commits
+ao meio e vai mostrando em tela o resultado. Se estiver tudo certo, digite "$ git bisect good" para pular
+para a próxima step. E assim vai até localizar o commit que originou o erro de alteração do arquivo.
+Localizando, digite "git bisect bad" então o git irá mostrar em qual commit esta a falha. "git bisect reset"
+para a investigação.
+
+$ git bisect start
+$ git bisect good <hash_inicio>
+$ git bisect bad <hash_final>
+$ git bisect reset  ---> Para a investigação
