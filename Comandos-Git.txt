@@ -61,7 +61,7 @@ git commit --amend -m "nome_nova_versão"   ---> Altera o nome da última versã
 						pode estar trabalhando no commit anterior.
 
 
-#### ALTERANDO EDITOR DE TEXTO PADRÃO DO GIT ####
+##### ALTERANDO EDITOR DE TEXTO PADRÃO DO GIT #####
 
 	# Essa alteração é feita no core.editor
 
