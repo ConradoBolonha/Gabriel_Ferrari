@@ -54,7 +54,7 @@ git log --shortstat   ---> Lista as modificações (diff) resumidas dentro das v
 git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro do último commit
 git log --shortstat -1   ---> Lista as modificações (diff) resumida dentro dos últimos três commits
 
-#### ALTERANDO O NOME DA VERSÃO ####
+##### ALTERANDO O NOME DA VERSÃO #####
 git commit --amend -m "nome_nova_versão"   ---> Altera o nome da última versão commitada. Ao trocar,
 						o número do rash também é modificado. Não é recomendado
 						alterar após ter feito um "git push", pois outra pessoa
